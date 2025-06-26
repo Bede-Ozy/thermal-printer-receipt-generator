@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laundry Receipt Generator</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+    }
+    .form-section, .receipt-section {
+      flex: 1;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 5px;
+      font-family: monospace;
+    }
+
+     .logo{
+      width:100%;
+      height:60px;
+      margin:0px auto 20px auto;
+      background-color: bisque;
+      border-radius: 10px;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+     .logo img{
+      width:50px;
+      /* height:100%; */
+    }
+    .receipt {
+      width: 58mm;
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+      font-size: 12px;
+    }
+    .center {
+      text-align: center;
+    }
+    .bold {
+      font-weight: bold;
+    }
+    .line {
+      border-top: 1px dashed #000;
+      margin: 5px 0;
+    }
+
+    .print-button{
+      width:64mm;
+      padding:10px;
+    }
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      .receipt-section, .receipt-section * {
+        visibility: visible;
+        padding:5px 0px;
+      }
+      .logo{
+        height:2rem;
+      }
+      .receipt-section {
+        position: absolute;
+        left: 0;
+        top: 0;right:0;bottom: 0;
+        width:100%;
+        height:100%;
+        background-color: red;
+      }
+
+      #receipt{
+        width:100%;
+        height:100%;
+      }
+
+      #receipt *{
+        font-size:2.3rem;
+      }
+
+      .print-button{
+        display:none;
+      }
+
+      #receipt .footer{
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-section">
+    <h3>Customer Details</h3>
+    <label>Customer Name
+      <input type="text" id="customerName" />
+    </label>
+    <label>Phone Number
+      <input type="text" id="phone" />
+    </label>
+    <label>Drop-off Date
+      <input type="date" id="dropoff" />
+    </label>
+    <label>Pickup Date
+      <input type="date" id="pickup" />
+    </label>
+    <label>Items (format: Shirt x2 = 200)
+      <textarea id="items" rows="5"></textarea>
+    </label>
+    <label>Total
+      <input type="number" id="total" />
+    </label>
+    <label>Paid
+      <input type="number" id="paid" />
+    </label>
+    <label>Payment Method
+      <input type="text" id="payment" />
+    </label>
+    <button onclick="updateReceipt()">Update Receipt</button>
+  </div>
+
+  <div class="receipt-section">
+    <div class="receipt" id="receipt">
+      <div class="logo">
+         <img src="logo2.jpg" alt="logo">
+      </div>
+      <div class="center bold">CLEAN & FRESH LAUNDRY</div>
+      <div class="center">123 Market Street, Lagos</div>
+      <div class="center">0801 234 5678 (WhatsApp)</div>
+      <div class="line"></div>
+      <div id="receiptDetails"></div>
+      <div class="line"></div>
+      <div class="center footer">Thanks for your patronage!</div>
+      <div class="center footer">Items left after 7 days may be disposed.</div>
+    </div>
+    <button class="print-button" onclick="window.print()">Print Receipt</button>
+  </div>
+
+  <script>
+    function updateReceipt() {
+      const name = document.getElementById('customerName').value;
+      const phone = document.getElementById('phone').value;
+      const dropoff = document.getElementById('dropoff').value;
+      const pickup = document.getElementById('pickup').value;
+      const items = document.getElementById('items').value;
+      const total = document.getElementById('total').value;
+      const paid = document.getElementById('paid').value;
+
+      const payment = document.getElementById('payment').value;
+
+      const itemLines = items.split('\n').map(line => `<div>${line}</div>`).join('');
+
+      const detailsHTML = `
+        <div>Customer: ${name}</div>
+        <div>Phone: ${phone}</div>
+        <div>Drop-off: ${dropoff}</div>
+        <div>Pickup: ${pickup}</div>
+        <div class="line"></div>
+        ${itemLines}
+        <div class="line"></div>
+        <div>Total ............... ₦${total}</div>
+        <div>Paid (${payment}) ....... ₦${ paid}</div>
+        <div>Balance ....... ₦${total - paid}</div>
+      `;
+
+      document.getElementById('receiptDetails').innerHTML = detailsHTML;
+    }
+  </script>
+</body>
+</html>
