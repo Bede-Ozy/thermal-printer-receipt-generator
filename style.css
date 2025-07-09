@@ -26,7 +26,7 @@ body {
 }
 .business-details { text-align: center; margin: 10px 0; }
 .business-details p { font-size: 12px; line-height: 1.4; }
-.receipt-table p {
+.receipt-table h2 {
   display: block;
   text-align: center;
   background: #000;
@@ -35,6 +35,15 @@ body {
   margin-bottom: 5px;
   font-size: 14px;
 }
+
+.services{
+   text-align: center;
+}
+
+.receipt-header *{
+  margin:10px 0px;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -46,7 +55,7 @@ th, td {
 }
 th { background: #000; color: #fff; font-size: 14px; }
 
-.items-cell { width: 60%; }
+.items-cell { width: 80%; }
 
 td:nth-child(2) { display: flex; justify-content: space-between; }
 
@@ -97,6 +106,16 @@ td[class$="-charge"]:hover {
     width:100%;
   }
 
+  .receipt-table h2{
+    background-color: none;
+    color:black;
+    font-size:2rem;
+  }
+
+  .receipt-header h1{
+    font-size:2.5rem;
+  }
+
   .receipt * {
     font-size:2rem;
     padding:0;
@@ -110,15 +129,15 @@ td[class$="-charge"]:hover {
     font:1.2rem;
   }
 
-th { color: #000; font-size: 14px; }
+  th { color: #000; font-size: 14px; }
 
-table{
-  width:90%;
-}
+  table{
+    width:90%;
+  }
 
-table tr{
-  padding:5px;
-}
+  table tr{
+    padding:5px;
+  }
 
 
 }
