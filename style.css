@@ -12,8 +12,8 @@ body {
   background: #f7f7f7;
 }
 .receipt-section { 
-    width: 500px; 
     margin: auto; 
+    border:5px solid black ;
 }
 .receipt {
   border: 1px dashed #333;
@@ -92,4 +92,33 @@ td[class$="-charge"]:hover {
 .print-button:hover { background: #0056b3; }
 @media print {
   .print-button { display: none; }
+
+  .receipt-section{
+    width:100%;
+  }
+
+  .receipt * {
+    font-size:2rem;
+    padding:0;
+  }
+  .business-details{
+    width:700px;
+    margin:0 auto;
+  }
+
+  .business-details p:nth-child(2){
+    font:1.2rem;
+  }
+
+th { color: #000; font-size: 14px; }
+
+table{
+  width:90%;
+}
+
+table tr{
+  padding:5px;
+}
+
+
 }
