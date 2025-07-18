@@ -115,9 +115,9 @@ td[class$="-charge"]:hover {
   .receipt-header h1{
     font-size:2.5rem;
   }
-
+  
   .receipt * {
-    font-size:1.5rem;
+    font-size:2rem;
     padding:0;
   }
   .business-details{
@@ -129,7 +129,7 @@ td[class$="-charge"]:hover {
     font-size:1.2rem;
   }
 
-  th { color: #000; font-size: 14px; }
+  th { color: #000; font-size: 14px; padding:5px;}
 
   table{
     width:90%;
