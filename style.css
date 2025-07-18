@@ -52,6 +52,8 @@ th, td {
   border: 1px dashed #333;
   padding: 5px;
   text-align: left;
+  font-weight: 600;
+  position: relative;
 }
 th { background: #000; color: #fff; font-size: 14px; }
 
@@ -73,6 +75,26 @@ td:nth-child(2) { display: flex; justify-content: space-between; }
     border:1px solid black;
     text-decoration: underline; 
 }
+td:hover .tooltip{
+  opacity:1;
+  transform: translateY(25px);
+  
+}
+.tooltip{
+  font-size:8px;
+  position:absolute;
+  top:0;
+  opacity:0;
+  z-index:100;
+  transition:all 0.2s ease-in-out;
+  left:0;
+  transform: translateY(35px) translateX(-10px);
+  padding:5px;
+  width:105%; 
+  background-color: #fafafa;
+  border-radius:10px;
+  box-shadow: 0px 0px 5px #ccc;
+}
 
 td[class$="-charge"] {
   cursor: pointer;
@@ -81,6 +103,7 @@ td[class$="-charge"] {
 
 td[class$="-charge"]:hover { 
     text-decoration: underline; 
+    border:2px solid #007bff;
 }
 
 .total-display {
