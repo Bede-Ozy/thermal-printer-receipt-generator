@@ -122,7 +122,7 @@ td[class$="-charge"]:hover {
   cursor: pointer;
 }
 .print-button:hover { background: #0056b3; }
-@media print {
+/* @media print {
   .print-button { display: none; }
 
   .receipt-section{
@@ -160,5 +160,86 @@ td[class$="-charge"]:hover {
 
   table tr{
     padding:5px;
+  }
+} */
+
+
+@media print {
+  @page {
+    size: 58mm auto; /* or '80mm auto' if using wider paper */
+    margin: 0;
+  }
+
+  body {
+    background: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .print-button {
+    display: none;
+  }
+
+  .receipt-section {
+    width: 58mm;
+    margin: 0 auto;
+    border: none;
+  }
+
+  .receipt {
+    width: 100%;
+    padding: 0;
+    border: none;
+    font-size: 10pt;
+  }
+
+  .receipt-header h1 {
+    font-size: 14pt;
+    margin: 5px 0;
+  }
+
+  .business-details {
+    text-align: center;
+    font-size: 9pt;
+    margin: 5px 0;
+  }
+
+  .receipt-table h2 {
+    font-size: 10pt;
+    background: #000;
+    color: #fff;
+    padding: 4px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    font-size: 9pt;
+    padding: 4px;
+    border: 1px dashed #000;
+  }
+
+  th {
+    background: #000;
+    color: #fff;
+  }
+
+  .count, td[class$="-charge"] {
+    color: #000;
+    border: none;
+  }
+
+  .tooltip {
+    display: none !important;
+  }
+
+  .total-display {
+    text-align: center;
+    font-weight: bold;
+    font-size: 10pt;
+    margin-top: 10px;
   }
 }
